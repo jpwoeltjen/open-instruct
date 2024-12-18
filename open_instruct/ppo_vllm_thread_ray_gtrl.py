@@ -1094,11 +1094,13 @@ class PolicyTrainerRayProcess(RayProcess):
                     sequence_length = first_true_indices(postprocessed_response == tokenizer.pad_token_id) - 1
                     score = torch.zeros(query.shape[0], device=query.device)
                     if args.reward_model_multiplier:
+                        print("getting the reward from the reward model")
                         _, score, _ = get_reward(
                             self.reward_model, postprocessed_query_response, tokenizer.pad_token_id, context_length
                         )
                         score *= args.reward_model_multiplier
                     if args.apply_verifiable_reward:
+                        print("getting the reward from the reward function with verifiable reward")
                         # we need to batch the gt to match query.
                         ground_truth = ground_truths[i : i + args.local_rollout_forward_batch_size]
                         dataset = datasets[i : i + args.local_rollout_forward_batch_size]
