@@ -212,7 +212,7 @@ def apply_verifiable_reward(
 ):
     # decode the responses
     print(" ------------ hello hello hello -------------")
-tall    decoded_responses = tokenizer.batch_decode(query_responses, skip_special_tokens=True)
+    decoded_responses = tokenizer.batch_decode(query_responses, skip_special_tokens=True)
     # if we have an answer extraction model, use it to extract the answer from the response
     if answer_extraction_model is not None:
         prompt = "Thus, the final answer is:"
