@@ -211,7 +211,8 @@ def apply_verifiable_reward(
     query_responses: torch.Tensor, tokenizer, ground_truths: List[str], datasets: List[str], verify_reward : int = 10, answer_extraction_model: Optional[torch.nn.Module] = None, answer_extraction_tokenizer: Optional[PreTrainedTokenizer] = None
 ):
     # decode the responses
-    decoded_responses = tokenizer.batch_decode(query_responses, skip_special_tokens=True)
+    print(" ------------ hello hello hello -------------")
+tall    decoded_responses = tokenizer.batch_decode(query_responses, skip_special_tokens=True)
     # if we have an answer extraction model, use it to extract the answer from the response
     if answer_extraction_model is not None:
         prompt = "Thus, the final answer is:"
